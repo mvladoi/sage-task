@@ -1,0 +1,69 @@
+
+
+Desing Procedures: 
+
+
+1. Download the Sample Data csv file and uploaded to Google Cloud Storage 
+https://cloud.google.com/storage/docs/uploading-objects
+
+
+2. Create a Google Cloud SQL instance (PostgreSQL), create the database, create the table 
+https://cloud.google.com/sql/docs/postgres/quickstart
+
+instance name = sage-transactions
+database = sagetransactions
+table = transactions
+
+
+CREATE TABLE transactions (id SERIAL PRIMARY KEY,name VARCHAR(255), symbol VARCHAR(255), currency VARCHAR(255), amount NUMERIC(5,2), date int8);
+
+
+3. Importing data from CSV files into Cloud SQL
+Prepare the Sample Data csv file to be imported with Pandas because it does not have the right format
+https://cloud.google.com/sql/docs/postgres/import-export/importing
+
+
+4. Set up the Google Cloud SQL proxy in order to connect to the SQL instance from local computer. This is needed for development and testing before deploying the application to the cloud.
+https://cloud.google.com/sql/docs/postgres/connect-admin-proxy
+
+instance connection name = sage-task:europe-west2:sage-transactions
+
+a.start the proxy
+./cloud_sql_proxy -dir=/cloudsql -instances=sage-task:europe-west2:sage-transactions -credential_file=key.json &
+
+b.connect to the proxy
+"sslmode=disable host=/cloudsql/sage-task:europe-west2:sage-transactions user=postgres"
+
+
+5.Start with Quickstart for Python 3 in the App Engine Standard Environment for creating a microservice 
+https://cloud.google.com/appengine/docs/standard/python3/quickstart
+
+python3 -m venv env
+source env/bin/activate
+
+gcloud app deploy
+
+
+6. Connect to Cloud SQL instance from local machine using the Cloud SQL proxy
+
+a. set the env variables 
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/mihai/Desktop/sage_task/key.json
+export DB_SOCKET_DIR=/Users/mihai/Desktop/sage_task/cloudsql
+export CLOUD_SQL_CONNECTION_NAME='sage-task:europe-west2:sage-transactions'
+export DB_USER='postgres'
+export DB_PASS='root'
+export DB_NAME='sagetransactions'
+
+
+7.
+
+a. http://ip-address/v1/api/transaction/
+list all the transactions in the database 
+
+b. http://ip-address/v1/api/transaction/<name>
+get the transaction with the specific name
+
+c. /v1/api/users/NEFF"
+
+
+
