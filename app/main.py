@@ -90,6 +90,7 @@ def transaction_get_by_symbol(symbol):
     return jsonify(users_schema.dump(transaction)), 200 
 
 
+
 #get transaction by name
 @app.route("/v1/api/transactions/get/name/<name>", methods=['POST'])
 def transaction_get_by_name(name):
@@ -98,6 +99,7 @@ def transaction_get_by_name(name):
     transaction = session.query(Transaction).filter(Transaction.name == name).all()
     session.close()  
     return jsonify(users_schema.dump(transaction)), 200        
+
 
 
 #post another transaction
@@ -129,7 +131,6 @@ def transaction_add():
 
 
 
-
 #delete a transaction by symbol 
 @app.route("/v1/api/transactions/delete/symbol/<symbol>", methods=['DELETE'])
 def transactions_delete_symbol(symbol):
@@ -150,13 +151,10 @@ def transactions_delete_symbol(symbol):
     if number_of_transactions > 0: 
         return jsonify(users_schema.dump(transactions)),  200
 
-    return jsonify([]), 200    
+    return jsonify([]), 200   
 
 
-
-
-
-#delete a transaction by symbol 
+#delete a transaction by name
 @app.route("/v1/api/transactions/delete/name/<name>", methods=['DELETE'])
 def transactions_delete_name(name):
      
@@ -176,6 +174,38 @@ def transactions_delete_name(name):
         return jsonify(users_schema.dump(transactions)),  200
 
     return jsonify([]), 200        
+
+
+#update  another transaction
+@app.route("/v1/api/transactions/update/<symbol>/<currency>", methods=['PUT'])
+def transaction_update(symbol, currency):
+      
+    
+    session = create_session()
+    request_data = request.get_json() 
+
+    new_name      = request_data['name'],
+    new_symbol    = request_data['symbol'],
+    new_currency  = request_data['currency'],
+    new_amount    = request_data['amount'],
+    new_date      = request_data['date']
+
+    try:
+        transaction = session.query(Transaction).filter(Transaction.symbol == symbol).filter(Transaction.currency == currency).one()
+        transaction.name = new_name[0]
+        transaction.symbol = new_symbol[0]
+        transaction.currency = new_currency[0]
+        transaction.amount = new_amount[0]
+        transaction.date = new_date
+   
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+  
+    return jsonify(user_schema.dump(transaction)), 201
 
 
 
