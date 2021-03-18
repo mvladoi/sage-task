@@ -16,7 +16,7 @@ table = transactions
 
 
 CREATE TABLE transactions (id SERIAL PRIMARY KEY,name VARCHAR(255), symbol VARCHAR(255), currency VARCHAR(255), amount NUMERIC(5,2), date int8);
-
+ALTER SEQUENCE transactions_id_seq RESTART WITH 10000
 
 3. Importing data from CSV files into Cloud SQL
 Prepare the Sample Data csv file to be imported with Pandas because it does not have the right format
@@ -51,12 +51,11 @@ export GOOGLE_APPLICATION_CREDENTIALS=/Users/mihai/Desktop/sage_task/key.json
 export DB_SOCKET_DIR=/Users/mihai/Desktop/sage_task/cloudsql
 export CLOUD_SQL_CONNECTION_NAME='sage-task:europe-west2:sage-transactions'
 export DB_USER='postgres'
-export DB_PASS='root'
+export DB_PASS='xxxx'
 export DB_NAME='sagetransactions'
 
 
 7.
-
 
 
 Action	HTTP         Verb	         URL Path	               Description
@@ -73,18 +72,6 @@ Delete	             DELETE	    /api/orders/{person_id}	   Defines a unique URL t
 
 
 
-
-
-
-ALTER SEQUENCE transactions_id_seq RESTART WITH 10000
-
-a. http://ip-address/v1/api/transaction/
-list all the transactions in the database 
-
-b. http://ip-address/v1/api/transaction/<name>
-get the transaction with the specific name
-
-c. /v1/api/users/NEFF"
 
 
 

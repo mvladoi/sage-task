@@ -70,6 +70,15 @@ users_schema = UserSchema(many=True)
 
 
 
+
+#get all transactions 
+@app.route('/', methods=['GET'])
+def homepage():
+    
+    return 'This is the Sage Api Task'
+
+
+
 #get all transactions 
 @app.route('/v1/api/transactions/', methods=['GET'])
 def all_transactions():
@@ -103,7 +112,7 @@ def transaction_get_by_name(name):
 
 
 #post another transaction
-@app.route("/v1/api/transactions/add", methods=['POST'])
+@app.route("/v1/api/transactions/add/", methods=['POST'])
 def transaction_add():
      
     request_data = request.get_json() 
@@ -200,7 +209,7 @@ def transaction_update(symbol, currency):
    
     except:
         session.rollback()
-        raise
+        return jsonify([])
     finally:
         session.close()
 

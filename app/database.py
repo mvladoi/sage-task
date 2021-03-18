@@ -11,7 +11,7 @@ def init_unix_connection_engine(db_config):
     db_user = os.environ["DB_USER"]
     db_pass = os.environ["DB_PASS"]
     db_name = os.environ["DB_NAME"]
-    db_socket_dir = os.environ["DB_SOCKET_DIR"]
+    db_socket_dir = '/cloudsql'
     cloud_sql_connection_name = os.environ["CLOUD_SQL_CONNECTION_NAME"]
 
     
