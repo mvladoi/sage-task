@@ -32,7 +32,7 @@ a.start the proxy
 ./cloud_sql_proxy -dir=/cloudsql -instances=sage-task:europe-west2:sage-transactions -credential_file=key.json &
 
 b.connect to the proxy
-"sslmode=disable host=/cloudsql/sage-task:europe-west2:sage-transactions user=postgres"
+psql "sslmode=disable host=/cloudsql/sage-task:europe-west2:sage-transactions user=postgres"
 
 
 5.Start with Quickstart for Python 3 in the App Engine Standard Environment for creating a microservice 
@@ -56,6 +56,27 @@ export DB_NAME='sagetransactions'
 
 
 7.
+
+
+
+Action	HTTP         Verb	         URL Path	               Description
+Create	             POST	    /api/people	               Defines a unique URL to create a new person
+Read	             GET	    /api/people	               Defines a unique URL to read a collection of people
+Read	             GET	    /api/people/{person_id}	   Defines a unique URL to read a particular person by person_id
+Update	             PUT	    /api/people/{person_id}	   Defines a unique URL to update an existing person by person_id
+Delete	             DELETE	    /api/orders/{person_id}	   Defines a unique URL to
+
+
+
+
+
+
+
+
+
+
+
+ALTER SEQUENCE transactions_id_seq RESTART WITH 10000
 
 a. http://ip-address/v1/api/transaction/
 list all the transactions in the database 

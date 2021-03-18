@@ -71,43 +71,43 @@ users_schema = UserSchema(many=True)
 
 
 #get all transactions 
-@app.route('/v1/api/transactions/')
+@app.route('/v1/api/transactions/', methods=['GET'])
 def all_transactions():
     
     session = create_session()
     transactions = session.query(Transaction).all()  
     session.close()
-    return jsonify(users_schema.dump(transactions))
+    return jsonify(users_schema.dump(transactions)), 200
 
 
 #get transaction by symbol
-@app.route("/v1/api/transaction_by_symbol/<symbol>")
-def transaction_by_symbol(symbol):
+@app.route("/v1/api/transactions/get/symbol/<symbol>", methods=['POST'])
+def transaction_get_by_symbol(symbol):
 
     session = create_session()
     transaction = session.query(Transaction).filter(Transaction.symbol == symbol).all()
     session.close()  
-    return jsonify(users_schema.dump(transaction)) 
+    return jsonify(users_schema.dump(transaction)), 200 
 
 
 #get transaction by name
-@app.route("/v1/api/transaction_by_name/<name>")
-def transaction_by_name(name):
+@app.route("/v1/api/transactions/get/name/<name>", methods=['POST'])
+def transaction_get_by_name(name):
 
     session = create_session()
     transaction = session.query(Transaction).filter(Transaction.name == name).all()
     session.close()  
-    return jsonify(users_schema.dump(transaction))        
+    return jsonify(users_schema.dump(transaction)), 200        
 
 
 #post another transaction
-@app.route("/v1/api/transaction_add", methods=['POST'])
+@app.route("/v1/api/transactions/add", methods=['POST'])
 def transaction_add():
      
     request_data = request.get_json() 
     session = create_session()
 
-    new_transaction = Transaction(
+    new_transaction = Transaction(    
     name      = request_data['name'],
     symbol    = request_data['symbol'],
     currency  = request_data['currency'],
@@ -115,16 +115,69 @@ def transaction_add():
     date      = request_data['date'],
     )
 
+    try:
+        session.add(new_transaction)
+        session.commit()
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+  
+    return jsonify(request_data), 201
 
 
-    transaction = session.query(Transaction(symbol=symbol))  
-    return jsonify(users_schema.dump(transaction))     
+
+
+#delete a transaction by symbol 
+@app.route("/v1/api/transactions/delete/symbol/<symbol>", methods=['DELETE'])
+def transactions_delete_symbol(symbol):
+     
+    session = create_session()
+
+    try:
+        querry = session.query(Transaction).filter(Transaction.symbol == symbol)
+        transactions = querry.all()
+        number_of_transactions = querry.delete()
+        session.commit()
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+    if number_of_transactions > 0: 
+        return jsonify(users_schema.dump(transactions)),  200
+
+    return jsonify([]), 200    
 
 
 
 
-   
- 
+
+#delete a transaction by symbol 
+@app.route("/v1/api/transactions/delete/name/<name>", methods=['DELETE'])
+def transactions_delete_name(name):
+     
+    session = create_session()
+
+    try:
+        transactions = session.query(Transaction).filter(Transaction.name == name).all()
+        number_of_transactions = session.query(Transaction).filter(Transaction.name == name).delete()
+        session.commit()
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+    if number_of_transactions > 0: 
+        return jsonify(users_schema.dump(transactions)),  200
+
+    return jsonify([]), 200        
+
+
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
