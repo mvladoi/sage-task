@@ -2,3 +2,4 @@ Flask==1.1.2
 sqlalchemy
 pg8000
 flask-marshmallow
+flask_sqlalchemy_session
