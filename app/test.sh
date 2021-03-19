@@ -55,7 +55,7 @@ curl --header "Content-Type: application/json" \
 curl --header "Content-Type: application/json" \
      --request PUT \
      --data '{"amount":-0.000,"currency":"JKY","date":1604939999999,"name":"Vocera Task Updated","symbol":"VCRLL"}' \
-     https://sage-task.nw.r.appspot.com//v1/api/transactions/update/VCRLL/JKY
+     https://sage-task.nw.r.appspot.com/v1/api/transactions/update/VCRLL/JKY
         
 
 
