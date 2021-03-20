@@ -72,13 +72,13 @@ Description  Defines a unique URL to retrieve a page of all the transactions
 
 c.
 Action	     HTTP 
-Verb         POST
+Verb         GET
 URL Path     /v1/api/transactions/get/symbol/<symbol> 
 Description  Defines a unique URL to retrieve all transaction with a specific symbol
 
 d.
 Action	     HTTP 
-Verb         POST
+Verb         GET
 URL Path     v1/api/transactions/get/name/<name>
 Description  Defines a unique URL to retrieve all transaction with a specific name
 
