@@ -63,12 +63,11 @@ Verb         GET
 URL Path     /v1/api/transactions/  
 Description  Defines a unique URL to retrieve all the transactions
 
-a.
+b.
 Action	     HTTP 
 Verb         GET
 URL Path     /v1/api/transactions/page_num/<page_num>  
 Description  Defines a unique URL to retrieve a page of all the transactions
-
 
 
 c.
