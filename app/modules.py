@@ -1,7 +1,6 @@
 
 from sqlalchemy.ext.declarative import declarative_base  
 from sqlalchemy import Column, String, Integer, BigInteger, Float
-from flask_marshmallow import Marshmallow
 
 
 base = declarative_base()
@@ -25,7 +24,6 @@ class Transaction(base):
 
     def __repr__(self):
         return "<User %r>" % self.username
-
 
 
        
