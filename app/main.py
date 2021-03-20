@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# [START gae_python38_app]
-# [START gae_python3_app]
+
 import datetime
 import logging
 import json
@@ -86,7 +85,7 @@ def homepage():
 
 
 #get all transactions 
-@app.route('/v1/api/transactions', methods=['GET'])
+@app.route('/v1/api/transactions/', methods=['GET'])
 def all_transactions():
     
     

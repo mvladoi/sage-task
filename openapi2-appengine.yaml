@@ -1,0 +1,127 @@
+# openapi2-appengine.yaml
+swagger: '2.0'
+info:
+  title: sage-api transactions
+  description: Sample API on API Gateway with an App Engine backend
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      summary: This is the homepage
+      operationId: home
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /v1/api/transactions:
+    get:
+      summary: This returns all transactions
+      operationId: get-transactions
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /v1/api/transactions/page_num/{page_number}:
+    get:
+      summary: This returns a transaction page
+      operationId: get-page-transactions
+      parameters:
+        - in: path
+          name: page_number
+          required: true
+          type: integer
+          minimum: 1
+          description: The number of the page
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /v1/api/transactions/get/symbol/{symbol}:
+    get:
+      summary: This returns transactions by symbol
+      operationId: get-transactions-symbol
+      parameters:
+        - in: path
+          name: symbol
+          required: true
+          type: string
+          description: The symbol of transaction to filter 
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /v1/api/transactions/get/name/{name}:
+    get:
+      summary: This returns transactions by name
+      operationId: get-transactions-name
+      parameters:
+        - in: path
+          name: name
+          required: true
+          type: string
+          description: The name of transaction to filter 
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /v1/api/transactions/add:
+    post:
+      summary: Creates a new transaction.
+      operationId: create-transaction
+      parameters:
+        - in: body
+          name: transaction
+          description: The transaction to create.
+          schema:
+            type: object
+            required:
+              - transaction-details
+            properties:
+              name:
+                type: string
+              symbol:
+                type: string
+              curency:
+                type: string
+              amount:
+                type: float
+              date:
+                type: integer
+          x-google-backend:
+              address: https://sage-task.nw.r.appspot.com
+              path_translation: [ APPEND_PATH_TO_ADDRESS ]
+              jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com          
+      responses:
+        '201':
+          description: A successful transaction created
+          schema:
+            type: string                               

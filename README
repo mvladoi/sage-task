@@ -127,7 +127,36 @@ complex datatypes, such as objects, to and from native Python datatypes)
 
 
 10. Implement pagination for the api which retrieve all the transactions
-transactions per page = 50     
+transactions per page = 50   
+
+
+11. Set up API Gateway to manage and secure an App Engine backend service.
+https://cloud.google.com/api-gateway/docs/get-started-app-engine
+
+a. create config
+gcloud api-gateway api-configs create sage-config \
+  --api=sage-api --openapi-spec=openapi2-appengine.yaml \
+  --project=sage-task --backend-auth-service-account=sage-gateway@sage-task.iam.gserviceaccount.
+
+
+  gcloud api-gateway api-configs describe sage-config \
+  --api=sage-api --project=sage-task
+
+b. create gateway
+  gcloud api-gateway gateways create sage-gateway \
+  --api=sage-api --api-config=sage-config-new \
+  --location=europe-west2 --project=sage-task
+
+  gcloud api-gateway gateways describe sage-gateway \
+  --location=europe-west2 --project=sage-task
+
+  defaultHostname: sage-gateway-3hbojviu.nw.gateway.dev = sage-gateway-3hbojviu.nw.gateway.dev
+
+curl https://sage-gateway-3hbojviu.nw.gateway.dev/
+
+c. write the yaml config file 
+           
+
 
 
 

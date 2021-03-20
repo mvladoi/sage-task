@@ -4,3 +4,4 @@ pg8000
 flask-marshmallow
 marshmallow 
 flask_sqlalchemy_session
+flask_sqlalchemy
