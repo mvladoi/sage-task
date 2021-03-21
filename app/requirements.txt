@@ -5,3 +5,4 @@ flask-marshmallow
 marshmallow 
 flask_sqlalchemy_session
 flask_sqlalchemy
+marshmallow-sqlalchemy

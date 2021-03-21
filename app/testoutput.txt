@@ -6,3 +6,11 @@
 [{"amount":-0.85,"currency":"JKY","date":1604933435000,"name":"Vocera Task","symbol":"VCRLL"}]
 {"amount":-0.845,"currency":"JKY","date":1604933435000,"name":"Vocera Task","symbol":"VCRLL"}
 {"amount":-0.0,"currency":"JKY","date":1604939999999,"name":"Vocera Task Updated","symbol":"VCRLL"}
+
+
+
+
+
+
+
+

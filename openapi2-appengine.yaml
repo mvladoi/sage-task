@@ -97,6 +97,8 @@ paths:
     post:
       summary: Creates a new transaction.
       operationId: create-transaction
+      consumes:
+        - application/json
       parameters:
         - in: body
           name: transaction
@@ -104,16 +106,20 @@ paths:
           schema:
             type: object
             required:
-              - transaction-details
+              - name
+                symbol
+                currency
+                amount
+                date
             properties:
               name:
                 type: string
               symbol:
                 type: string
-              curency:
+              currency:
                 type: string
               amount:
-                type: float
+                type: number
               date:
                 type: integer
           x-google-backend:

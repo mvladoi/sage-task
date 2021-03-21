@@ -127,7 +127,7 @@ def transaction_get_by_name(name):
 #post another transaction
 @app.route("/v1/api/transactions/add", methods=['POST'])
 def transaction_add():
-     
+
     request_data = request.get_json() 
     user_schema.validate(request_data)
     
