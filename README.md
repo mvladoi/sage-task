@@ -76,51 +76,51 @@ export DB_NAME='sagetransactions'
 Action	     HTTP \
 Verb         GET\
 URL Path     /v1/api/transactions/  
-> Description  Defines a unique URL to retrieve all the transactions\
+> Description  Defines a unique URL to retrieve all the transactions
 
 - **b.**\
 Action	     HTTP \
 Verb         GET\
 URL Path     /v1/api/transactions/page_num/<page_num>
-> Description  Defines a unique URL to retrieve a page of all the transactions\
+> Description  Defines a unique URL to retrieve a page of all the transactions
 
 
 - **c.**\
 Action	     HTTP \
 Verb         GET\
 URL Path     /v1/api/transactions/get/symbol/<symbol> 
-> Description  Defines a unique URL to retrieve all transaction with a specific symbol\
+> Description  Defines a unique URL to retrieve all transaction with a specific symbol
 
 - **d.**\
 Action	     HTTP \
 Verb         GET\
 URL Path     v1/api/transactions/get/name/<name>
-> Description  Defines a unique URL to retrieve all transaction with a specific name\
+> Description  Defines a unique URL to retrieve all transaction with a specific name
 
 - **e.**\
 Action	     HTTP \
 Verb         POST\
 URL Path     /v1/api/transactions/add/
-> Description  Defines a unique URL to add a new transaction \
+> Description  Defines a unique URL to add a new transaction
 
 - **f.**\
 Action	     HTTP\ 
 Verb         DELETE\
 URL Path     v1/api/transactions/delete/symbol/<symbol>
-> Description  Defines a unique URL to delete all transactions with a specif symbol\
+> Description  Defines a unique URL to delete all transactions with a specif symbol
 
 - **g.**\
 Action	     HTTP \
 Verb         DELETE\
 URL Path     v1/api/transactions/delete/symbol/<name>
-> Description  Defines a unique URL to delete all transactions with a specif name\
+> Description  Defines a unique URL to delete all transactions with a specif name
 
 
 - **h.**\
 Action	     HTTP \
 Verb         PUT\
 URL Path     v1/api/transactions/update/<symbol>/<currency>
-> Description  Defines a unique URL to delete all transactions with a specif name\
+> Description  Defines a unique URL to delete all transactions with a specif name
 
 
 
