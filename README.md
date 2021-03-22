@@ -103,7 +103,7 @@ Verb         POST\
 URL Path     /v1/api/transactions/add/
 > Description  Defines a unique URL to add a new transaction
 
-- **f.**\
+- **f.** \
 Action	     HTTP \ 
 Verb         DELETE \
 URL Path     v1/api/transactions/delete/symbol/<symbol>
@@ -116,9 +116,9 @@ URL Path     v1/api/transactions/delete/symbol/<name>
 > Description  Defines a unique URL to delete all transactions with a specif name
 
 
-- **h.**\
+- **h.** \
 Action	     HTTP \
-Verb         PUT\
+Verb         PUT \
 URL Path     v1/api/transactions/update/<symbol>/<currency>
 > Description  Defines a unique URL to delete all transactions with a specif name
 
