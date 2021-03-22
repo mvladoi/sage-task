@@ -3,11 +3,11 @@
 # Desing Procedures: 
 
 
-## 1. Download the Sample Data csv file and uploaded to Google Cloud Storage 
+### 1. Download the Sample Data csv file and uploaded to Google Cloud Storage 
 https://cloud.google.com/storage/docs/uploading-objects
 
 
-## 2. Create a Google Cloud SQL instance (PostgreSQL), create the database, create the table 
+### 2. Create a Google Cloud SQL instance (PostgreSQL), create the database, create the table 
 https://cloud.google.com/sql/docs/postgres/quickstart
 
 instance name = sage-transactions
@@ -18,7 +18,7 @@ table = transactions
 CREATE TABLE transactions (id SERIAL PRIMARY KEY,name VARCHAR(255), symbol VARCHAR(255), currency VARCHAR(255), amount NUMERIC(5,2), date int8);
 ALTER SEQUENCE transactions_id_seq RESTART WITH 10000
 
-3. Importing data from CSV files into Cloud SQL
+### 3. Importing data from CSV files into Cloud SQL
 Prepare the Sample Data csv file to be imported with Pandas because it does not have the right format
 https://cloud.google.com/sql/docs/postgres/import-export/importing
 
