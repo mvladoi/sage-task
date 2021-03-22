@@ -20,6 +20,7 @@ ALTER SEQUENCE transactions_id_seq RESTART WITH 10000
 
 ### 3. Importing data from CSV files into Cloud SQL
 Prepare the Sample Data csv file to be imported with Pandas because it does not have the right format
+
 [Importing data into Cloud SQL](https://cloud.google.com/sql/docs/postgres/import-export/importing)
 
 
