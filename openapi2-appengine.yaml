@@ -17,6 +17,8 @@ paths:
         address: https://sage-task.nw.r.appspot.com
         path_translation: [ APPEND_PATH_TO_ADDRESS ]
         jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: [] 
       responses:
         '200':
           description: A successful response
@@ -30,6 +32,8 @@ paths:
         address: https://sage-task.nw.r.appspot.com
         path_translation: [ APPEND_PATH_TO_ADDRESS ]
         jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []  
       responses:
         '200':
           description: A successful response
@@ -50,6 +54,8 @@ paths:
         address: https://sage-task.nw.r.appspot.com
         path_translation: [ APPEND_PATH_TO_ADDRESS ]
         jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []  
       responses:
         '200':
           description: A successful response
@@ -69,6 +75,8 @@ paths:
         address: https://sage-task.nw.r.appspot.com
         path_translation: [ APPEND_PATH_TO_ADDRESS ]
         jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []  
       responses:
         '200':
           description: A successful response
@@ -88,6 +96,8 @@ paths:
         address: https://sage-task.nw.r.appspot.com
         path_translation: [ APPEND_PATH_TO_ADDRESS ]
         jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []  
       responses:
         '200':
           description: A successful response
@@ -99,35 +109,123 @@ paths:
       operationId: create-transaction
       consumes:
         - application/json
+      produces:
+        - application/json
       parameters:
         - in: body
-          name: transaction
-          description: The transaction to create.
+          name: body
+          required: false
           schema:
-            type: object
-            required:
-              - name
-                symbol
-                currency
-                amount
-                date
-            properties:
-              name:
-                type: string
-              symbol:
-                type: string
-              currency:
-                type: string
-              amount:
-                type: number
-              date:
-                type: integer
-          x-google-backend:
+            $ref: '#/definitions/Model0'
+      x-google-backend:
               address: https://sage-task.nw.r.appspot.com
               path_translation: [ APPEND_PATH_TO_ADDRESS ]
-              jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com          
+              jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []                  
       responses:
         '201':
           description: A successful transaction created
           schema:
-            type: string                               
+            type: string
+  /v1/api/transactions/update/{symbol}/{currency}:
+    put:
+      summary: Update a new transaction.
+      operationId: update-transaction
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/Model0'
+        - in: path
+          name: symbol
+          required: true
+          type: string
+          description: The symbol of transaction to filter
+        - in: path
+          name: currency
+          required: true
+          type: string
+          description: The currency of transaction to filter      
+      x-google-backend:
+              address: https://sage-task.nw.r.appspot.com
+              path_translation: [ APPEND_PATH_TO_ADDRESS ]
+              jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []                  
+      responses:
+        '201':
+          description: A successful transaction created
+          schema:
+            type: string                                                     
+  /v1/api/transactions/delete/symbol/{symbol}:
+    delete:
+      summary: This delete transactions by symbol
+      operationId: delete-transactions-symbol
+      parameters:
+        - in: path
+          name: symbol
+          required: true
+          type: string
+          description: The symbol of transaction to delete
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []  
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /v1/api/transactions/delete/name/{name}:
+    delete:
+      summary: This delete transactions by name
+      operationId: delete-transactions-name
+      parameters:
+        - in: path
+          name: name
+          required: true
+          type: string
+          description: The name of transaction to delete 
+      x-google-backend:
+        address: https://sage-task.nw.r.appspot.com
+        path_translation: [ APPEND_PATH_TO_ADDRESS ]
+        jwt_audience: 272804158038-6kc250fms52o33b7dcfjrl1f9d8rripb.apps.googleusercontent.com
+      security:
+          - api_key: []  
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string          
+
+
+definitions:
+  Model0:
+    properties:
+      amount:
+        type: number
+        format: double
+      currency:
+        type: string
+      date:
+        type: integer
+        format: int64
+      name:
+        type: string
+      symbol:
+        type: string  
+        
+securityDefinitions:
+      # This section configures basic authentication with an API key.
+      api_key:
+        type: "apiKey"
+        name: "key"
+        in: "query"        

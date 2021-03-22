@@ -156,16 +156,15 @@ curl https://sage-gateway-3hbojviu.nw.gateway.dev/
 
 c. write the yaml config file 
 
-I got stuck writing my POST requested with some internal errors 
-https://stackoverflow.com/questions/66726184/google-cloud-api-gateway-messageno-healthy-upstream-code503
-           
 
-12. To do: Securing access by using an API key
+12. Securing access by using an API key
 https://cloud.google.com/api-gateway/docs/quickstart-console
 
+sage-api.apigateway.sage-task.cloud.goog
 
+api-key = AIzaSyCdy-L8R_r-jv8gsB17aWJxPN7pV7BggCo
 
-
+https://sage-gateway-3hbojviu.nw.gateway.dev/?key=AIzaSyCdy-L8R_r-jv8gsB17aWJxPN7pV7BggCo
 
 
 
