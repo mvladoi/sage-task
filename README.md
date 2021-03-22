@@ -48,11 +48,17 @@ gcloud app deploy
 ### 6. Connect to Cloud SQL instance from local machine using the Cloud SQL proxy
 
 a. set the env variables 
+
 export GOOGLE_APPLICATION_CREDENTIALS=/Users/mihai/Desktop/sage_task/key.json
+
 export DB_SOCKET_DIR=/Users/mihai/Desktop/sage_task/cloudsql
+
 export CLOUD_SQL_CONNECTION_NAME='sage-task:europe-west2:sage-transactions'
+
 export DB_USER='postgres'
+
 export DB_PASS='xxxx'
+
 export DB_NAME='sagetransactions'
 
 
