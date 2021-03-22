@@ -57,51 +57,51 @@ export DB_NAME='sagetransactions'
 
 ### 7. Api to be implemented : 
 
--a.
+- a.
 Action	     HTTP 
 Verb         GET
 URL Path     /v1/api/transactions/  
 Description  Defines a unique URL to retrieve all the transactions
 
--b.
+- b.
 Action	     HTTP 
 Verb         GET
 URL Path     /v1/api/transactions/page_num/<page_num>  
 Description  Defines a unique URL to retrieve a page of all the transactions
 
 
--c.
+- c.
 Action	     HTTP 
 Verb         GET
 URL Path     /v1/api/transactions/get/symbol/<symbol> 
 Description  Defines a unique URL to retrieve all transaction with a specific symbol
 
--d.
+- d.
 Action	     HTTP 
 Verb         GET
 URL Path     v1/api/transactions/get/name/<name>
 Description  Defines a unique URL to retrieve all transaction with a specific name
 
--e.
+- e.
 Action	     HTTP 
 Verb         POST
 URL Path     /v1/api/transactions/add/
 Description  Defines a unique URL to add a new transaction 
 
--f.
+- f.
 Action	     HTTP 
 Verb         DELETE
 URL Path     v1/api/transactions/delete/symbol/<symbol>
 Description  Defines a unique URL to delete all transactions with a specif symbol
 
--g.
+- g.
 Action	     HTTP 
 Verb         DELETE
 URL Path     v1/api/transactions/delete/symbol/<name>
 Description  Defines a unique URL to delete all transactions with a specif name
 
 
--h.
+- h.
 Action	     HTTP 
 Verb         PUT
 URL Path     v1/api/transactions/update/<symbol>/<currency>
