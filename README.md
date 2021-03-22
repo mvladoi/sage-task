@@ -1,13 +1,13 @@
 
 
-Desing Procedures: 
+# Desing Procedures: 
 
 
-# 1. Download the Sample Data csv file and uploaded to Google Cloud Storage 
+## 1. Download the Sample Data csv file and uploaded to Google Cloud Storage 
 https://cloud.google.com/storage/docs/uploading-objects
 
 
-# 2. Create a Google Cloud SQL instance (PostgreSQL), create the database, create the table 
+## 2. Create a Google Cloud SQL instance (PostgreSQL), create the database, create the table 
 https://cloud.google.com/sql/docs/postgres/quickstart
 
 instance name = sage-transactions
