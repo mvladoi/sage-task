@@ -15,8 +15,11 @@ database = sagetransactions
 table = transactions
 
 
+```
 CREATE TABLE transactions (id SERIAL PRIMARY KEY,name VARCHAR(255), symbol VARCHAR(255), currency VARCHAR(255), amount NUMERIC(5,2), date int8);
 ALTER SEQUENCE transactions_id_seq RESTART WITH 10000
+```
+
 
 ### 3. Importing data from CSV files into Cloud SQL
 Prepare the Sample Data csv file to be imported with Pandas because it does not have the right format
