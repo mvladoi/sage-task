@@ -8,7 +8,7 @@ instance_class: B2
 env_variables:
   CLOUD_SQL_CONNECTION_NAME: sage-task:europe-west2:sage-transactions
   DB_USER: postgres
-  DB_PASS: root
+  DB_PASS: xxxx
   DB_NAME: sagetransactions
 
 
