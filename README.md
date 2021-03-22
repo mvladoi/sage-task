@@ -57,11 +57,11 @@ export DB_NAME='sagetransactions'
 
 ### 7. Api to be implemented : 
 
-- a.
-Action	     HTTP 
-Verb         GET
-URL Path     /v1/api/transactions/  
-Description  Defines a unique URL to retrieve all the transactions
+- a.\
+Action	     HTTP \
+Verb         GET\
+URL Path     /v1/api/transactions/  \
+Description  Defines a unique URL to retrieve all the transactions\
 
 - b.
 Action	     HTTP 
