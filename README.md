@@ -103,7 +103,7 @@ Verb         POST\
 URL Path     /v1/api/transactions/add/
 > Description  Defines a unique URL to add a new transaction
 
-- **f.** \
+- **f.**\
 Action	     HTTP \ 
 Verb         DELETE \
 URL Path     v1/api/transactions/delete/symbol/<symbol>
